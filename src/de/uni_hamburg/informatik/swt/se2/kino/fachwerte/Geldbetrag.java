@@ -39,8 +39,10 @@ public class Geldbetrag
      */
     public static Geldbetrag select(int euro, int cent)
     {
+        assert !(Math.signum(euro) == 1.0 && Math.signum(cent) == -1.0) : "Vorbedingung verletzt: !(Math.signum(euro) <= Math.signum(cent))";
+
     	int vorzeichen = 1;
-    	if (((int) Math.signum(euro) == -1) | ((int) Math.signum(cent) == -1))
+    	if (Math.signum(euro) < 0 || Math.signum(cent) < 0)
     	{
     		vorzeichen = -1;
     	}
