@@ -12,6 +12,13 @@ public class Geldbetrag
         _eurocent = eurocent;
     }
 
+    /**
+     * Returns a @Geldbetrag object from the @UNIVERSUM pool of possible @Geldbetrag objects.
+     * If none exists, a new one is created and added to the pool.
+     *
+     * @param eurocent The amount of Euro Cents
+     * @return A @Geldbetrag object depicting the eurocents passed via argument
+     */
     public static Geldbetrag select(int eurocent)
     {
         if (!UNIVERSUM.containsKey(eurocent))
@@ -22,11 +29,26 @@ public class Geldbetrag
         return UNIVERSUM.get(eurocent);
     }
 
+    /**
+     * Returns a @Geldbetrag object from the @UNIVERSUM pool of possible @Geldbetrag objects.
+     * If none exists, a new one is created and added to the pool.
+     *
+     * @param euro The amount of Euros
+     * @param cent The amount of Cents
+     * @return A @Geldbetrag object depicting the eurocents passed via argument
+     */
     public static Geldbetrag select(int euro, int cent)
     {
         return Geldbetrag.select(euro * 100 + cent);
     }
 
+    /**
+     * Parses a String depicting a human-readable amount of money, e.g.: "3,50"
+     * for 3 euros with 50 cents.
+     *
+     * @param geldString The human-readable string
+     * @return A @Geldbetrag object depicting the appropriate money
+     */
     public static Geldbetrag parse(String geldString)
     {
        if (geldString.equals(""))
@@ -49,19 +71,29 @@ public class Geldbetrag
         return Geldbetrag.select(euro, cent);
     }
 
+    /**
+     * Returns the amount of cents stored in this object.
+     *
+     * @return The amount of cents
+     */
     public int toEurocent()
     {
         return _eurocent;
     }
 
+    /**
+     * Converts the money that this object depicts into a human-readable string.
+     *
+     * @return The money depicted by this object
+     */
     @Override
     public String toString()
     {
     	String vorzeichen = "";
-    	
+
     	if (Math.signum(_eurocent) == -1.0)
     		vorzeichen = "-";
-    	
+
         return vorzeichen + Math.abs(_eurocent / 100) + "," + String.format("%02d", Math.abs(_eurocent) % 100) + "€";
     }
 }

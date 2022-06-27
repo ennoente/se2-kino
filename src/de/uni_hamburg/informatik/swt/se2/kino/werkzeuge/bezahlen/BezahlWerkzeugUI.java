@@ -17,11 +17,17 @@ public class BezahlWerkzeugUI
     private JLabel _restBetragLabel;
     private JTextField _uebergebenerBetragFeld;
 
+    /**
+     * Initializes the UI.
+     */
     public BezahlWerkzeugUI()
     {
         erstelleDialog();
     }
 
+    /**
+     * Creates the dialog necessary for paying.
+     */
     private void erstelleDialog()
     {
         _frame = new JFrame("Bezahl deine Plätze!");
@@ -46,51 +52,93 @@ public class BezahlWerkzeugUI
         _panel.add(_cancelButton);
     }
 
+    /**
+     * Closes the dialog.
+     */
     public void close()
     {
         _frame.dispose();
     }
 
+    /**
+     * Shows the dialog.
+     */
     public void show()
     {
         _dialog.setVisible(true);
     }
 
+    /**
+     * Enables the submit button.
+     */
     public void enableSubmitButton()
     {
         _submitButton.setEnabled(true);
     }
 
+    /**
+     * Disables the submit button.
+     */
     public void disableSubmitButton()
     {
         _submitButton.setEnabled(false);
     }
 
+    /**
+     * Returns the submit button.
+     *
+     * @return The submit button
+     */
     public JButton getSubmitButton()
     {
         return _submitButton;
     }
 
+    /**
+     * Returns the cancel button.
+     *
+     * @return The cancel button
+     */
     public JButton getCancelButton()
     {
         return _cancelButton;
     }
 
+    /**
+     * Returns the already payed amount.
+     *
+     * @return The already paid amount
+     */
     public Geldbetrag getUebergebenerBetrag()
     {
         return Geldbetrag.parse(getUebergebenerBetragFeld().getText());
     }
 
+    /**
+     * Returns the JTextField for the payment input.
+     *
+     * @return The JTextField for the payment input
+     */
     public JTextField getUebergebenerBetragFeld()
     {
         return _uebergebenerBetragFeld;
     }
 
+    /**
+     * Sets the amount to be payed.
+     *
+     * @param betrag The amount to be payed
+     */
     public void setZuZahlenderBetrag(Geldbetrag betrag)
     {
         _zuZahlenderBetragLabel.setText("Zu zahlen: " + betrag);
     }
 
+    /**
+     * Sets the amount that is refunded to the user.
+     *
+     * @param betrag The amount that is refunded to the user.
+     */
     public void setRestbetrag(Geldbetrag betrag)
     {
         _restBetragLabel.setText("Restbetrag: " + betrag);

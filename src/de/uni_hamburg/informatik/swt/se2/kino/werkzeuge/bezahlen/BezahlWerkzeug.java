@@ -14,6 +14,9 @@ public class BezahlWerkzeug
 
     private boolean _esWurdeBezahlt = false;
 
+    /**
+     * Initializes the object.
+     */
     public BezahlWerkzeug()
     {
         _ui = new BezahlWerkzeugUI();
@@ -33,6 +36,9 @@ public class BezahlWerkzeug
         return _esWurdeBezahlt;
     }
 
+    /**
+     * Refreshes the amounts that have already been paid and that are to be refunded.
+     */
     private void aktualisiereBetraege()
     {
         _ui.setZuZahlenderBetrag(_zuZahlenderBetrag);
@@ -41,6 +47,9 @@ public class BezahlWerkzeug
         _ui.setRestbetrag(_restBetrag);
     }
 
+    /**
+     * Refreshes the UI buttons.
+     */
     private void aktualisiereButtons()
     {
         if (_restBetrag.toEurocent() < 0) {
@@ -50,6 +59,9 @@ public class BezahlWerkzeug
         }
     }
 
+    /**
+     * Registers the UI actions, specifically the cancel and submit buttons and the payment input.
+     */
     private void registriereUIAktionen()
     {
         _ui.getSubmitButton().addActionListener(new ActionListener()
