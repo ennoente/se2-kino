@@ -62,7 +62,7 @@ public class GeldbetragTest
         assertEquals("100,10€", Geldbetrag.select(100, 10).toString());
         assertEquals("-1,50€", Geldbetrag.select(-1, 50).toString());
         assertEquals("-2,05€", Geldbetrag.select(-2, 05).toString());
-        assertEquals("-2,05€", Geldbetrag.select(-2, -005).toString());
-        assertEquals("-0,05€", Geldbetrag.select(-0, -5).toString());
+        assertEquals("-2,05€", Geldbetrag.select(-2, 005).toString());
+        assertEquals("-0,05€", Geldbetrag.select(0, -5).toString());
     }
 }
