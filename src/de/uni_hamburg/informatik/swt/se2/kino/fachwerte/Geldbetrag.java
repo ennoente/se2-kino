@@ -48,6 +48,11 @@ public class Geldbetrag
     @Override
     public String toString()
     {
-        return _eurocent / 100 + "," + _eurocent % 100 + "€";
+    	String vorzeichen = "";
+    	
+    	if (Math.signum(_eurocent) == -1.0)
+    		vorzeichen = "-";
+    	
+        return vorzeichen + _eurocent / 100 + "," + String.format("%02d", Math.abs(_eurocent) % 100) + "€";
     }
 }
