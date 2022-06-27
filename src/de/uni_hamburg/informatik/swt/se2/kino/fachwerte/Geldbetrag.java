@@ -76,8 +76,6 @@ public class Geldbetrag
             cent = Integer.parseInt(centString);
         }
 
-        System.out.println("parser:" + euro);
-        System.out.println("parser:" + cent);
         return Geldbetrag.select(euro, cent);
     }
 
