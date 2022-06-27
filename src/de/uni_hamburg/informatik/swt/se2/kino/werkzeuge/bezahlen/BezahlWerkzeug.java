@@ -13,8 +13,23 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug {
 
     public BezahlWerkzeug()
     {
+    	_successful = false;
         _ui = new BezahlWerkzeugUI();
-        _successful = false;
+                
+        _ui.getCancelButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                _successful = false;
+                _ui.hide();
+            }
+        });
+        _ui.getSubmitButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                _successful = true;
+                _ui.hide();
+            }
+        });
     }
 
     /**
@@ -23,19 +38,6 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug {
      */
     public boolean fuehreBezahlungDurch(Geldbetrag zuZahlenderBerag)
     {
-        _ui.getCancelButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Return false
-                _successful = false;
-            }
-        });
-        _ui.getSubmitButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                _successful = true;
-            }
-        });
         _ui.show();
 
         return _successful;

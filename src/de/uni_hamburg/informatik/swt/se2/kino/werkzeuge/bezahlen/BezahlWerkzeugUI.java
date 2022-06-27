@@ -82,15 +82,20 @@ public class BezahlWerkzeugUI {
 
     public void setBetrag(Geldbetrag betrag)
     {
-
+    	_betragLabel.setText(betrag.toString());
     }
 
     public void setRestbetrag(Geldbetrag betrag)
     {
-
+    	_restBetrag.setText(betrag.toString());
     }
 
     public void show() {
         _dialog.setVisible(true);
+    }
+    
+    public void hide()
+    {
+    	_dialog.setVisible(false);
     }
 }
