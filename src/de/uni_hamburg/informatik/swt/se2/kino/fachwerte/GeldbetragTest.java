@@ -56,9 +56,9 @@ public class GeldbetragTest {
 	
 	@Test
 	public void testToString() {	
-		assertEquals(true, "100,10€".equals(Geldbetrag.select(100, 10).toString()));
-		assertEquals(true, "-1,50€".equals(Geldbetrag.select(-1, 50).toString()));
-		assertEquals(true, "-2,05€".equals(Geldbetrag.select(-2, 05).toString()));
+		assertEquals("100,10€", Geldbetrag.select(100, 10).toString());
+		assertEquals("-1,50€", Geldbetrag.select(-1, 50).toString());
+		assertEquals("-2,05€", Geldbetrag.select(-2, 05).toString());
 	}
 
 }
