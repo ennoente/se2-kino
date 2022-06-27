@@ -53,6 +53,6 @@ public class Geldbetrag
     	if (Math.signum(_eurocent) == -1.0)
     		vorzeichen = "-";
     	
-        return vorzeichen + _eurocent / 100 + "," + String.format("%02d", Math.abs(_eurocent) % 100) + "€";
+        return vorzeichen + Math.abs(_eurocent / 100) + "," + String.format("%02d", Math.abs(_eurocent) % 100) + "€";
     }
 }
