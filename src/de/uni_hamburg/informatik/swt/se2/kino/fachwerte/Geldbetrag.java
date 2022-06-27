@@ -66,10 +66,10 @@ public class Geldbetrag
      */
     public static Geldbetrag parse(String geldString)
     {
-       if (geldString.equals(""))
-       {
-           return Geldbetrag.select(0);
-       }
+        if (geldString.equals(""))
+        {
+            return Geldbetrag.select(0);
+        }
 
         String filteredString = geldString.replaceAll("[^0-9-,]*", "");
         String[] splitString = filteredString.split(",");

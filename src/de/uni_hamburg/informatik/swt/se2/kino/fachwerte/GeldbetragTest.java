@@ -50,6 +50,8 @@ public class GeldbetragTest
 
         assertEquals(Geldbetrag.select(0), Geldbetrag.parse(""));
 
+        assertEquals(Geldbetrag.select(16, 0), Geldbetrag.parse("16"));
+
         assertEquals(Geldbetrag.select(1, 60), Geldbetrag.parse("1,600"));
 
         assertEquals(Geldbetrag.select(1, 0), Geldbetrag.parse("1,005"));
