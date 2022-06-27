@@ -10,7 +10,9 @@ public class BezahlWerkzeug
     private Geldbetrag _zuZahlenderBetrag;
     private Geldbetrag _bezahlterBetrag;
     private Geldbetrag _restBetrag;
-    private BezahlWerkzeugUI _ui;
+    private final BezahlWerkzeugUI _ui;
+
+    private boolean _esWurdeBezahlt = false;
 
     public BezahlWerkzeug()
     {
@@ -27,7 +29,7 @@ public class BezahlWerkzeug
         aktualisiereBetraege();
         aktualisiereButtons();
         _ui.show();
-        return false;
+        return _esWurdeBezahlt;
     }
 
     private void aktualisiereBetraege()
@@ -53,6 +55,8 @@ public class BezahlWerkzeug
         {
             @Override public void actionPerformed(ActionEvent e)
             {
+                _esWurdeBezahlt = true;
+                _ui.close();
             }
         });
 
@@ -60,6 +64,8 @@ public class BezahlWerkzeug
         {
             @Override public void actionPerformed(ActionEvent e)
             {
+                _esWurdeBezahlt = false;
+                _ui.close();
             }
         });
 

@@ -3,6 +3,7 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.bezahlen;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class BezahlWerkzeugUI
 {
@@ -24,10 +25,10 @@ public class BezahlWerkzeugUI
     private void erstelleDialog()
     {
         _frame = new JFrame("Bezahl deine Plätze!");
-        _dialog = new JDialog(_frame);
+        _dialog = new JDialog(_frame, "Bezahl deine Plätze!", Dialog.ModalityType.DOCUMENT_MODAL);
         _panel = new JPanel();
-        _cancelButton = new JButton("Ok");
-        _submitButton = new JButton("Abbrechen");
+        _cancelButton = new JButton("Abbrechen");
+        _submitButton = new JButton("OK");
         _zuZahlenderBetragLabel = new JLabel(" Zu zahlender Betrag: ");
         _uebergebenerBetragLabel = new JLabel("Uebergebener Betrag: ");
         _uebergebenerBetragFeld = new JTextField("0,00");
@@ -44,6 +45,11 @@ public class BezahlWerkzeugUI
         _panel.add(_cancelButton);
     }
 
+    public void close()
+    {
+        _frame.dispose();
+    }
+
     public void show()
     {
         _dialog.setVisible(true);
@@ -51,12 +57,12 @@ public class BezahlWerkzeugUI
 
     public void enableSubmitButton()
     {
-        this._dialog.setEnabled(true);
+        _submitButton.setEnabled(true);
     }
 
     public void disableSubmitButton()
     {
-        this._dialog.setEnabled(false);
+        _submitButton.setEnabled(false);
     }
 
     public JButton getSubmitButton()
