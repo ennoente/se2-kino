@@ -65,6 +65,7 @@ public class BezahlWerkzeugUI
      */
     public void show()
     {
+        _uebergebenerBetragFeld.setText("");
         _dialog.setVisible(true);
     }
 
