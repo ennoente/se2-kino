@@ -25,7 +25,10 @@ public class BezahlWerkzeug
 
     /**
      * Führt den Bezahlvorgang zu einem oder mehreren Plätzen durch.
-     * @return
+     *
+     * @param zuZahlenderBetrag der zu zahlende Geldbetrag
+     *
+     * @return boolean ob bezahlt wurde
      */
     public boolean fuehreBezahlungDurch(Geldbetrag zuZahlenderBetrag)
     {

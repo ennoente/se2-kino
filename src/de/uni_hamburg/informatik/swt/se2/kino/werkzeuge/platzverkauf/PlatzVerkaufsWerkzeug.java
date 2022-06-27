@@ -99,15 +99,12 @@ public class PlatzVerkaufsWerkzeug
      */
     private void fuehreBarzahlungDurch()
     {
-        // Oeffne Dialog
-        boolean bezahlungErfolgreich = _bezahlWerkzeug.fuehreBezahlungDurch(_aktuellerPreis);
+        boolean bezahlungErfolgreich =_bezahlWerkzeug.fuehreBezahlungDurch(_aktuellerPreis);
 
-        if (!bezahlungErfolgreich)
+        if (bezahlungErfolgreich)
         {
-            return;
+            verkaufePlaetze(_vorstellung);
         }
-
-        verkaufePlaetze(_vorstellung);
     }
 
     /**
