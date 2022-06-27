@@ -57,7 +57,7 @@ public class BezahlWerkzeugUI
      */
     public void close()
     {
-        _uebergebenerBetragFeld.setText("");
+        _uebergebenerBetragFeld.setText("0,00");
         _frame.dispose();
     }
 
