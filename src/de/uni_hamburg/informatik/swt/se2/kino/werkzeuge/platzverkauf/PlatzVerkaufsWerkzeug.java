@@ -102,12 +102,19 @@ public class PlatzVerkaufsWerkzeug
         // Oeffne Dialog
         boolean bezahlungErfolgreich = _bezahlWerkzeug.fuehreBezahlungDurch(_aktuellerPreis);
 
+        System.out.println(bezahlungErfolgreich);
+
         if (!bezahlungErfolgreich)
         {
             return;
         }
 
         verkaufePlaetze(_vorstellung);
+    }
+
+    private void reagiereAufBezahlung()
+    {
+
     }
 
     /**
@@ -128,6 +135,10 @@ public class PlatzVerkaufsWerkzeug
      */
     private void aktualisierePreisanzeige(Set<Platz> plaetze)
     {
+        if (_vorstellung == null) {
+            return;
+        }
+
         int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
         _aktuellerPreis = Geldbetrag.select(preis);
 
