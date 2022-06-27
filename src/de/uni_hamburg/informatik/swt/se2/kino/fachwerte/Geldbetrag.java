@@ -27,17 +27,26 @@ public class Geldbetrag
         return Geldbetrag.select(euro * 100 + cent);
     }
 
-    public static Geldbetrag parse(String euroString)
+    public static Geldbetrag parse(String geldString)
     {
-//        if (euroString.equals("")) {
-//            Geldbetrag.select(0);
-//        }
+       if (geldString.equals(""))
+       {
+           Geldbetrag.select(0);
+       }
 
-       String[] splitString = euroString.replace("€", "").split(",");
-       int euro = Integer.parseInt("0" + splitString[0]);
-       int cent = Integer.parseInt("0" + splitString[1]);
+        String filteredString = geldString.replaceAll("[^0-9-,]*", "");
+        String[] splitString = filteredString.split(",");
 
-       return Geldbetrag.select(euro, cent);
+        int euro = Integer.parseInt(splitString[0]);
+        int cent = 0;
+
+        if (filteredString.contains(","))
+        {
+            String centString = splitString[1].length() < 2 ? splitString[1] + "0" : splitString[1];
+            cent = Integer.parseInt(centString);
+        }
+
+        return Geldbetrag.select(euro, cent);
     }
 
     public int toEurocent()

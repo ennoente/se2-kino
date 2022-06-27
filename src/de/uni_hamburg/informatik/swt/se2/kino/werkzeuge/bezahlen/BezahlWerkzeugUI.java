@@ -93,6 +93,6 @@ public class BezahlWerkzeugUI
 
     public void setRestbetrag(Geldbetrag betrag)
     {
-        _restBetragLabel.setText("Resbetrag: " + betrag);
+        _restBetragLabel.setText("Restbetrag: " + betrag);
     }
 }
