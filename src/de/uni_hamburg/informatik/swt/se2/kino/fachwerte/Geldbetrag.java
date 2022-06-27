@@ -68,7 +68,7 @@ public class Geldbetrag
     {
        if (geldString.equals(""))
        {
-           Geldbetrag.select(0);
+           return Geldbetrag.select(0);
        }
 
         String filteredString = geldString.replaceAll("[^0-9-,]*", "");

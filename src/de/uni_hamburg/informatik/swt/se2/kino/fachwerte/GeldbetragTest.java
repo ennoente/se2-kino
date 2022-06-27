@@ -47,6 +47,8 @@ public class GeldbetragTest
         assertEquals(Geldbetrag.select(-100, 10), Geldbetrag.parse("-100,10€"));
 
         assertEquals(Geldbetrag.select(10), Geldbetrag.parse("0,10€"));
+
+        assertEquals(Geldbetrag.select(0), Geldbetrag.parse(""));
     }
 
     @Test public void testToEurocent()
