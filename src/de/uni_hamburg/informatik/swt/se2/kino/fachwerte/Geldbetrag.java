@@ -79,7 +79,17 @@ public class Geldbetrag
 
         if (filteredString.contains(","))
         {
-            String centString = splitString[1].length() < 2 ? splitString[1] + "0" : splitString[1];
+            String centString;
+
+            if (splitString[1].length() == 1)
+            {
+                centString = splitString[1] + "0";
+            }
+            else
+            {
+                centString = splitString[1].substring(0, 2);
+            }
+
             cent = Integer.parseInt(centString);
         }
 
