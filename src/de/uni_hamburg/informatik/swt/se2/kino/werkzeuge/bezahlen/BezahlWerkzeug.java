@@ -5,7 +5,11 @@ import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class BezahlWerkzeug {
+public class BezahlWerkzeug
+{
+    private Geldbetrag _zuZahlenderBetrag;
+    private Geldbetrag _bezahlterBetrag;
+    private Geldbetrag _restBetrag;
     private BezahlWerkzeugUI _ui;
 
     public BezahlWerkzeug()
@@ -17,21 +21,54 @@ public class BezahlWerkzeug {
      * Führt den Bezahlvorgang zu einem oder mehreren Plätzen durch.
      * @return
      */
-    public boolean fuehreBezahlungDurch(Geldbetrag zuZahlenderBerag)
+    public boolean fuehreBezahlungDurch(Geldbetrag zuZahlenderBetrag)
     {
-
+        _zuZahlenderBetrag = zuZahlenderBetrag;
+        aktualisiereBetraege();
+        aktualisiereButtons();
+        _ui.show();
+        return false;
     }
 
-    public void aktualisiereBetraege()
+    private void aktualisiereBetraege()
     {
+        _ui.setZuZahlenderBetrag(_zuZahlenderBetrag);
+        _bezahlterBetrag = _ui.getUebergebenerBetrag();
+        _restBetrag = Geldbetrag.select(_zuZahlenderBetrag.toEurocent() - _bezahlterBetrag.toEurocent());
+        _ui.setRestbetrag(_restBetrag);
+    }
 
+    private void aktualisiereButtons()
+    {
+        if (_restBetrag.toEurocent() < 0) {
+            _ui.enableSubmitButton();
+        } else {
+            _ui.disableSubmitButton();
+        }
     }
 
     private void registriereUIAktionen()
     {
-        _ui.getSubmitButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        _ui.getSubmitButton().addActionListener(new ActionListener()
+        {
+            @Override public void actionPerformed(ActionEvent e)
+            {
+            }
+        });
+
+        _ui.getCancelButton().addActionListener(new ActionListener()
+        {
+            @Override public void actionPerformed(ActionEvent e)
+            {
+            }
+        });
+
+        _ui.getUebergebenerBetragFeld().addActionListener(new ActionListener()
+        {
+            @Override public void actionPerformed(ActionEvent e)
+            {
+                aktualisiereBetraege();
+                aktualisiereButtons();
             }
         });
     }

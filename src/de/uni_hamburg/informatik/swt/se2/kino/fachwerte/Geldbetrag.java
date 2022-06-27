@@ -2,7 +2,8 @@ package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 
 import java.util.HashMap;
 
-public class Geldbetrag {
+public class Geldbetrag
+{
     private final int _eurocent;
     private static final HashMap<Integer, Geldbetrag> UNIVERSUM = new HashMap<>();
 
@@ -24,6 +25,24 @@ public class Geldbetrag {
     public static Geldbetrag select(int euro, int cent)
     {
         return Geldbetrag.select(euro * 100 + cent);
+    }
+
+    public static Geldbetrag parse(String euroString)
+    {
+//        if (euroString.equals("")) {
+//            Geldbetrag.select(0);
+//        }
+
+       String[] splitString = euroString.replace("€", "").split(",");
+       int euro = Integer.parseInt("0" + splitString[0]);
+       int cent = Integer.parseInt("0" + splitString[1]);
+
+       return Geldbetrag.select(euro, cent);
+    }
+
+    public int toEurocent()
+    {
+        return _eurocent;
     }
 
     @Override

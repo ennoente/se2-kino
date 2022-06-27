@@ -128,8 +128,10 @@ public class PlatzVerkaufsWerkzeug
      */
     private void aktualisierePreisanzeige(Set<Platz> plaetze)
     {
-        int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
-        _aktuellerPreis = Geldbetrag.select(preis);
+        if(_vorstellung != null) {
+            int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
+            _aktuellerPreis = Geldbetrag.select(preis);
+        }
 
         if (istVerkaufenMoeglich(plaetze))
         {
