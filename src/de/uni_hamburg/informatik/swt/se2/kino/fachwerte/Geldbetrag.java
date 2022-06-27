@@ -39,7 +39,15 @@ public class Geldbetrag
      */
     public static Geldbetrag select(int euro, int cent)
     {
-        return Geldbetrag.select(euro * 100 + cent);
+    	int vorzeichen = 1;
+    	if (((int) Math.signum(euro) == -1) | ((int) Math.signum(cent) == -1))
+    	{
+    		vorzeichen = -1;
+    	}
+    	
+    	int eurocent = vorzeichen * (Math.abs(euro * 100) + Math.abs(cent));
+
+        return Geldbetrag.select(eurocent);
     }
 
     /**
@@ -68,6 +76,8 @@ public class Geldbetrag
             cent = Integer.parseInt(centString);
         }
 
+        System.out.println("parser:" + euro);
+        System.out.println("parser:" + cent);
         return Geldbetrag.select(euro, cent);
     }
 
