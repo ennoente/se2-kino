@@ -29,6 +29,7 @@ public class BezahlWerkzeug
      */
     public boolean fuehreBezahlungDurch(Geldbetrag zuZahlenderBetrag)
     {
+        _esWurdeBezahlt = false;
         _zuZahlenderBetrag = zuZahlenderBetrag;
         aktualisiereBetraege();
         aktualisiereButtons();
@@ -52,7 +53,7 @@ public class BezahlWerkzeug
      */
     private void aktualisiereButtons()
     {
-        if (_restBetrag.toEurocent() < 0) {
+        if (_restBetrag.toEurocent() <= 0) {
             _ui.enableSubmitButton();
         } else {
             _ui.disableSubmitButton();
