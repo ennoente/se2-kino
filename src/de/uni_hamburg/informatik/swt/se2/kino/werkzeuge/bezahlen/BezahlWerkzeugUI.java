@@ -25,7 +25,7 @@ public class BezahlWerkzeugUI
     private void erstelleDialog()
     {
         _frame = new JFrame("Bezahl deine Plätze!");
-        _dialog = new JDialog(_frame, "Bezahl deine Plätze!", Dialog.ModalityType.DOCUMENT_MODAL);
+        _dialog = new JDialog(_frame, "Bezahl deine Plätze!");
         _panel = new JPanel();
         _cancelButton = new JButton("Abbrechen");
         _submitButton = new JButton("OK");
@@ -34,6 +34,7 @@ public class BezahlWerkzeugUI
         _uebergebenerBetragFeld = new JTextField("0,00");
         _restBetragLabel = new JLabel("Restbetrag: ");
 
+        _dialog.setModal(true);
         _dialog.setSize(400, 200);
         _dialog.add(_panel);
         _panel.setLayout(new BoxLayout(_panel, BoxLayout.Y_AXIS));

@@ -17,6 +17,7 @@ public class BezahlWerkzeug
     public BezahlWerkzeug()
     {
         _ui = new BezahlWerkzeugUI();
+        registriereUIAktionen();
     }
 
     /**
