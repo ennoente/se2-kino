@@ -37,11 +37,14 @@ public class Geldbetrag
      * @param cent The amount of Cents
      * @return A @Geldbetrag object depicting the eurocents passed via argument
      *
-     * @require !(Math.signum(euro) == 1.0 && Math.signum(cent) == -1.0)
+     * @require !(Math.signum(euro) == -1.0 and Math.signum(cent) == -1.0)
+     * @require !(Math.signum(euro) == 1.0 and Math.signum(cent) == -1.0)
+     * 
      */
     public static Geldbetrag select(int euro, int cent)
     {
-        assert !(Math.signum(euro) == 1.0 && Math.signum(cent) == -1.0) : "Vorbedingung verletzt: !(Math.signum(euro) <= Math.signum(cent))";
+    	assert !((Math.signum(euro) == -1.0) && (Math.signum(cent) == -1.0)): "vorbedingung verletzt";
+    	assert !((Math.signum(euro) == 1.0) && (Math.signum(cent) == -1.0)): "vorbedingung verletzt";
 
     	int vorzeichen = 1;
     	if (Math.signum(euro) < 0 || Math.signum(cent) < 0)
